@@ -216,9 +216,9 @@ $databases = array (
     'default' => 
     array (
       'database' => 'webwewantfestdev',
-      'username' => 's47622',
-      'password' => 'Gz8Tz2EHgv4JLT8',
-      'host' => 'localhost',
+      'username' => 'scdigital',
+      'password' => 'bIk-orz-yiaf-',
+      'host' => 'scdigital.cgxj1amdigzw.eu-west-1.rds.amazonaws.com',
       'port' => '',
       'driver' => 'mysql',
       'prefix' => '',
