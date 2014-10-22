@@ -1,0 +1,90 @@
+<?php
+/**
+ * @file
+ * Installation file for the user_admin_theme customization module.
+ *
+ * @author Jorge Lopez-Lago
+ * @copyright Southbank Centre (http://www.southbankcentre.co.uk)
+ */
+
+/**
+ * Variables names declaration
+ */
+define('USER_ADMIN_THEME_ANON_ROLE', 'user_admin_theme_view_the_administration_theme_' . DRUPAL_ANONYMOUS_RID);
+define('USER_ADMIN_THEME_AUTH_ROLE', 'user_admin_theme_view_the_administration_theme_' . DRUPAL_AUTHENTICATED_RID);
+
+/**
+ * Implements hook_enable().
+ */
+function user_admin_theme_enable() {
+  // Check for existing permissions so we don't remove them on disable
+  // This only accounts for permissions state before enabling this module, not for what may happen after (!)
+  $permissions = user_role_permissions(array(DRUPAL_ANONYMOUS_RID => 'anonymous user', DRUPAL_AUTHENTICATED_RID => 'authenticated user'));
+  variable_set(USER_ADMIN_THEME_ANON_ROLE, (int)array_key_exists('view the administration theme', $permissions[DRUPAL_ANONYMOUS_RID]));
+  variable_set(USER_ADMIN_THEME_AUTH_ROLE, (int)array_key_exists('view the administration theme', $permissions[DRUPAL_AUTHENTICATED_RID]));
+
+  // Set up permissions for all users to access the admin theme
+  // This is required to allow the login form to use the admin theme
+  // @see festival_admin_paths_alter()
+  // Anonymous role
+  if (!variable_get(USER_ADMIN_THEME_ANON_ROLE, FALSE)) {
+    user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view the administration theme'));
+    _user_admin_theme_set_message('Anonymous', 'granted', 'status');
+  }
+  // Authenticated role
+  if (!variable_get(USER_ADMIN_THEME_AUTH_ROLE, FALSE)) {
+    user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view the administration theme'));
+    _user_admin_theme_set_message('Authenticated', 'granted', 'status');
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function user_admin_theme_disable() {
+  // Remove the assigned permissions for anonymous users
+  if (!variable_get(USER_ADMIN_THEME_ANON_ROLE, FALSE)) {
+    user_role_revoke_permissions(DRUPAL_ANONYMOUS_RID, array('view the administration theme'));
+    _user_admin_theme_set_message('Anonymous', 'revoked', 'status');
+  }
+
+  // Remove the assigned permissions for authenticated users
+  if (!variable_get(USER_ADMIN_THEME_AUTH_ROLE, FALSE)) {
+    user_role_revoke_permissions(DRUPAL_AUTHENTICATED_RID, array('view the administration theme'));
+    _user_admin_theme_set_message('Authenticated', 'revoked', 'status');
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function user_admin_theme_uninstall() {
+  // Delete the state variables
+  variable_del(USER_ADMIN_THEME_ANON_ROLE);
+  variable_del(USER_ADMIN_THEME_AUTH_ROLE);
+}
+
+/**
+ * Wrapper function to set up messages
+ * All messages follow the same pattern so lets group them together
+ *
+ * @param string $role
+ *  The user role to display in the message.
+ * @param string $action
+ *  Action to perform: revoked, granted
+ * @param string $type
+ *  Type of message as required by drupal_set_message()
+ *
+ * @see drupal_set_message()
+ *
+ * @todo IS it worth to check if the parameters for the function are correct?
+ */
+function _user_admin_theme_set_message($role, $action, $type = 'status') {
+  drupal_set_message(t('Festival module: %role role @action permission to !view.',
+    array(
+      '%role' => $role,
+      '@action' => $action,
+      '!view' => l('view the administration theme', 'admin/people/permissions', array('fragment' => 'edit-view-the-administration-theme')),
+    )),
+    $type);
+}

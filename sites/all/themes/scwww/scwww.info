@@ -1,0 +1,54 @@
+name = Southbank Centre - Web We Want
+description = HTML5 Theme based on the Basic theme.
+screenshot = images/optimized/screenshot.gif
+core = "7.x"
+version = "7.x-1.0"
+project = "scwww"
+engine = phptemplate
+
+regions[help] = Help
+regions[page_top] = Page top
+regions[header] = Header
+regions[pre_content] = Pre content
+regions[content] = Content
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
+regions[post_content] = Post content
+regions[footer_firstcolumn] = Footer first column
+regions[footer_secondcolumn] = Footer second column
+regions[footer_thirdcolumn] = Footer third column
+regions[footer_fourthcolumn] = Footer fourth column
+regions[page_bottom] = Page bottom
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = search
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+; Stylesheets
+stylesheets[all][] = css/normalize.css
+stylesheets[all][] = css/default.css
+stylesheets[all][] = css/layout.css
+stylesheets[all][] = css/style.css
+stylesheets[print][] = css/print.css
+
+; Scripts
+scripts[] = js/build/scripts.js
+scripts[] = js/build/modernizr.js
+scripts[] = js/build/collapse.js
+scripts[] = js/build/transition.js
+
+settings[scwww_tabs] = 1
+settings[scwww_breadcrumb] = 1
+settings[scwww_breadcrumb_home] = 1
+settings[scwww_breadcrumb_separator] = »
+settings[clear_registry] = 0
+settings[scwww_ie_enabled] = 0
+settings[scwww_ie_enabled_versions][ie8] = 0
+settings[scwww_ie_enabled_versions][ie9] = 0
+settings[scwww_ie_enabled_versions][ie10] = 0

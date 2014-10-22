@@ -1,0 +1,5 @@
+name = 'User admin theme'
+description = 'Set up the admin theme for all user operations. This allows to use the admin theme for login.'
+core = 7.x
+package =  'Southbank Centre'
+version = 7.x-1.0.0

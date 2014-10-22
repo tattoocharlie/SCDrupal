@@ -1,0 +1,77 @@
+; Packaging information for web_we_want_festival
+name = "Web We Want Festival"
+description = "Installation profile for the Web We Want Festival site."
+exclusive = "1"
+core = "7.x"
+; ----------
+; Dependencies
+; ----------
+; Administration
+dependencies[] = admin_devel
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
+; Bean
+dependencies[] = bean
+dependencies[] = bean_admin_ui
+; Chaos tool suite
+dependencies[] = ctools
+; Core
+dependencies[] = block
+dependencies[] = book
+dependencies[] = contextual
+dependencies[] = dblog
+dependencies[] = field
+dependencies[] = field_sql_storage
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = filter
+dependencies[] = help
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = node
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = shortcut
+dependencies[] = system
+dependencies[] = taxonomy
+dependencies[] = text
+dependencies[] = user
+; Date/Time
+dependencies[] = date
+dependencies[] = date_all_day
+dependencies[] = date_api
+dependencies[] = date_popup
+dependencies[] = date_views
+; Development
+dependencies[] = profiler_builder
+; Fields
+dependencies[] = color_field
+dependencies[] = field_group
+dependencies[] = link
+dependencies[] = title
+; Other
+dependencies[] = book_delete
+dependencies[] = book_helper
+dependencies[] = entity
+dependencies[] = entity_view_mode
+dependencies[] = exclude_node_title
+dependencies[] = insert
+dependencies[] = libraries
+dependencies[] = pathauto
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = transliteration
+; User interface
+dependencies[] = jquery_update
+; Views
+dependencies[] = views
+dependencies[] = views_ui
+; Features
+dependencies[] = features
+dependencies[] = sc_content_type_default_values
+dependencies[] = sc_basic_page
+dependencies[] = sc_event
+dependencies[] = sc_question
+

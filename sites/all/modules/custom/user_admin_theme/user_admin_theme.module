@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file
+ * Module file for the user_admin_theme customization module
+ *
+ * @author Jorge Lopez-Lago
+ * @copyright Southbank Centre (http://www.southbankcentre.co.uk)
+ */
+
+/**
+ * Implements hook_admin_paths_alter().
+ */
+function user_admin_theme_admin_paths_alter(&$paths) {
+  // Treat all user pages as administrative
+  // They will be displayed with the admin theme, if allowed
+  // @see user_admin_theme.install
+  $paths['user'] = TRUE;
+  $paths['user/*'] = TRUE;
+}

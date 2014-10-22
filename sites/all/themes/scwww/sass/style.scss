@@ -1,0 +1,830 @@
+// Import variables and mixins
+@import "config";
+
+// Import custom styles.
+@import "custom";
+
+// Web fonts
+@font-face{
+  font-family: 'SBC Lutz';
+  src: url('../fonts/sbclutz.eot');
+  src: url('../fonts/sbclutz.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/sbclutz.svg') format('svg'), // load svg first to fix Chrome antialias bug: http://www.fontspring.com/blog/smoother-web-font-rendering-chrome
+  url('../fonts/sbclutz.woff') format('woff'),
+  url('../fonts/sbclutz.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SBC Akkurat';
+  src: url('../fonts/sbcakkrgpro1.eot');
+  src: url('../fonts/sbcakkrgpro1.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/sbcakkrgpro1.svg') format('svg'),
+  url('../fonts/sbcakkrgpro1.woff') format('woff'),
+  url('../fonts/sbcakkrgpro1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SBC AkkuratBold';
+  src: url('../fonts/sbcakkbdpro1.eot');
+  src: url('../fonts/sbcakkbdpro1.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/sbcakkbdpro1.svg') format('svg'),
+  url('../fonts/sbcakkbdpro1.woff') format('woff'),
+  url('../fonts/sbcakkbdpro1.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SBC AkkuratLight';
+  src: url('../fonts/lineto-akkurat-pro-light.eot');
+  src: url('../fonts/lineto-akkurat-pro-light.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/lineto-akkurat-pro-light.svg#AkkuratProLight') format('svg'),
+  url('../fonts/lineto-akkurat-pro-light.woff') format('woff'),
+  url('../fonts/lineto-akkurat-pro-light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// GENERAL STYLES
+
+body {
+  margin: 0;
+  // Setting up font size, leading and font family
+  //  http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography
+  font: 16px / 1.2 "Helvetica Neue", helvetica, Arial, sans-serif;
+  background: $bg-grey url("../images/body-bg@2x.jpg") no-repeat;
+  background-position: right -70px;
+  background-size: 822px auto;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+}
+.no-backgroundsize body { background-image: url("../images/body-bg.jpg"); }
+
+// Links
+a {
+  &:link, &:visited {
+    color: $dark-grey;
+    text-decoration: underline;
+  }
+}
+
+a {
+  &:hover, &:active {
+    color: $dark-grey;
+    text-decoration: none;
+    opacity: 0.5;
+  }
+}
+
+
+// Titles.
+#site-name {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: 300;
+  padding: 0 0 0.5em;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "SBC AkkuratBold";
+  font-weight: normal;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 0.5em 0;
+}
+
+h2 {
+  font-size: 1.8em;
+  font-weight: 300;
+  margin-bottom: 0.75em;
+}
+
+h3 {
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  font-size: 1.2em;
+  margin-bottom: 0.8em;
+}
+
+h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+// Paragraph styles.
+p {
+  margin: 0 0 1em 0;
+}
+
+// List styles.
+ul, ol {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+// Table styles.
+table {
+  width: 99%;
+}
+
+tr.even,
+tr.odd {
+  td {
+    padding: 10px 5px;
+}
+}
+
+tr.odd {
+  background-color: white;
+}
+
+// Code.
+pre, code, tt {
+  font: 1em "andale mono", "lucida console", monospace;
+  line-height: 1.5;
+}
+
+pre {
+  background-color: #efefef;
+  display: block;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #aaaaaa;
+}
+
+// List styles.
+ul {
+  list-style-type: disc;
+  ul {
+    list-style-type: circle;
+    ul {
+      list-style-type: square;
+      ul {
+        list-style-type: circle;
+    }
+  }
+}
+}
+
+ol {
+  list-style-type: decimal;
+  ol {
+    list-style-type: lower-alpha;
+    ol {
+      list-style-type: decimal;
+  }
+}
+}
+
+// Abbreviation.
+abbr {
+  border-bottom: 1px dotted #666666;
+  cursor: help;
+  white-space: nowrap;
+}
+
+// UI improvements.
+#edit-title {
+  font-size: 24px;
+  width: 99%;
+}
+
+#system-themes-form img {
+  width: 100px;
+}
+
+.form-item .description {
+  font-style: italic;
+  line-height: 1.2em;
+  font-size: 0.8em;
+  margin-top: 5px;
+  color: #777777;
+}
+
+#edit-delete {
+  color: #cc0000;
+}
+
+// Console, style from slate theme.
+div.messages {
+  padding: 9px;
+  margin: 1em 0;
+  color: #003366;
+  background: #bbddff;
+  border: 1px solid #aaccee;
+}
+
+div.warning {
+  color: #884400;
+  background: #ffee66;
+  border-color: #eedd55;
+}
+
+div.error {
+  color: white;
+  background: #ee6633;
+  border-color: #dd5522;
+}
+
+div.status {
+  color: #336600;
+  background: #ccff88;
+  border-color: #bbee77;
+}
+
+
+// PAGE ELEMENTS
+
+#header {
+  color: #FFF;
+  h2 { font-family: "SBC AkkuratBold"; font-size: 5.0em; letter-spacing: -1px; line-height: 1; margin: 0 0 0.5em; }
+  h2 span { font-family: "SBC AkkuratLight"; }
+  h3 { clear: both; font-family: "SBC Lutz"; font-size: 2.0em; font-weight: normal; letter-spacing: -0.03em; margin: 1.5em 0 0.3em; }
+}
+
+#disclaimer { background: #f9f39d; padding: 0.5em 0; text-align: right; font-size: 0.8em; color: #333; }
+#disclaimer a {
+  &:link, &:visited {
+    color: #333;
+  }
+}
+
+// Logo
+#logo { position: relative; z-index: 10; display: block; width: 170px; float: right; padding: 20px 0 10px; }
+#logo img { display: block;  width: 100%; height: auto; }
+#logo:hover { opacity: 0.9; }
+
+// Navigation
+#navigation { padding-top: 20px; min-height: 65px; }
+#navigation ul li {
+  a { display: block; padding: 14px 20px; background: #FFF; color: #000; font-family: "SBC AkkuratBold"; font-size: 0.9em; line-height: 1.3; text-decoration: none; }
+  a:hover { background: #000; color: #FFF; opacity: 1; }
+  .active { background: #ebebeb; }
+}
+#mobile-menu-icon { display: none; width: 30px; height: 20px; background: url("../images/mobile-menu-icon.png") no-repeat; text-indent: -999px; }
+
+
+// Bootstrap 3 collpase styling
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+}
+
+
+// Content blocks
+
+.block { margin-bottom: 1px; }
+
+// Festival description(main)
+#region-pre-content .block {
+  background: rgba(51,51,51,0.85); padding: $padding; font-family: "SBC AkkuratLight"; font-size: 1.9em; color: #FFF;
+  p { margin: 0; }
+  a { color: white; }
+}
+
+// Festival dates
+#block-festival-dates {
+  background: rgba(51,51,51,0.8);
+  padding: $padding;
+  font-family: "SBC AkkuratLight";
+  font-size: 1.3em;
+  color: #999;
+  h3 { margin: 0; color: #FFF; font-size: 1em; }
+  ul { list-style: none; margin: 0; }
+  li { margin: 0; }
+  li.active { color: #FFF; }
+}
+
+// Festival description(side)
+#block-about-this-festival {
+  background: #FFF;
+  color: $dark-grey;
+  font-size: 1.1em;
+  line-height: 1.4;
+  padding: $padding;
+  h3 { border-bottom: 1px solid $light-grey; padding-bottom: 0.5em; margin-bottom: 0.8em; }
+  p { margin: 0; }
+}
+
+// Festival description(side)
+#block-view-all-events {
+  background: #b9e4fb;
+  color: $dark-grey;
+  font-weight: bold;
+  h3 { margin: 0; }
+  h3.block-title { display: none ; }
+  p { margin: 0; }
+  .content a { display: block; padding: 15px $padding; background: url("../images/all-events-icon@2x.png") no-repeat; background-position: right center; background-size: 55px auto; }
+  .content a:hover { color: #026ea7; opacity: 1; }
+}
+.no-backgroundsize #block-view-all-events .content a { background-image: url("../images/all-events-icon.png"); }
+
+
+// Homepage content
+
+.front #content-area {
+  color: #FFF;
+  min-height: 400px;
+  h3 { font-family: "SBC AkkuratBold"; font-size: 50px; font-weight: normal; margin: 0.8em 0; line-height: 1.2; }
+}
+
+.video-wrapper { // responsive embeds - see http://www.smashingmagazine.com/2014/02/27/making-embedded-content-work-in-responsive-design/
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 9/16 */
+}
+.paragraphs-item-paragraph-flickr .field-item, .paragraphs-item-paragraph-soundcloud .field-item {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.6667%; /* 2/3 */
+}
+
+.video-wrapper iframe, .paragraphs-item-paragraph-flickr .field-item iframe, .paragraphs-item-paragraph-soundcloud .field-item iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* make the iframe/embed fill the wrapper */
+  height: 100%;
+  width: 100%;
+}
+
+
+// Homepage questions view block
+
+.front #block-views-questions_homepage_list-block {
+  background: #FFF;
+  color: $dark-grey;
+  margin-bottom: 0px;
+  h3 { font-family: "SBC AkkuratLight"; font-size: 2.6em; margin: 0.5em 0; padding: 0 $padding; }
+  .field-item { float: left; margin-right: 0.5em;  }
+  a { text-decoration: none; color: #FFF; }
+  article { border-bottom: 1px solid $bg-grey; }
+  .question-links { font-family: "SBC AkkuratLight"; font-size: 1.4em; letter-spacing: -1px; }
+  .question-hashtag { float: left; color: #FFF; padding: 15px $padding 15px 50px; background: url("../images/twitter-icon@2x.png") no-repeat left center; background-size: 60px;  }
+  .get-involved-btn { float: right;  color: #FFF; padding: 15px 75px 15px $padding; border-left: 1px solid $bg-grey; background: url("../images/arrow-nav-left@2x.png") no-repeat right center ; background-size: 64px; }
+}
+.no-backgroundsize .front #block-views-questions_homepage_list-block .get-involved-btn { background-image: url("../images/arrow-nav-left.png"); }
+.no-backgroundsize .front #block-views-questions_homepage_list-block .question-hashtag { background-image: url("../images/twitter-icon.png"); }
+
+
+
+// Homepage live twitter feed
+
+.front #block-social-conversation-latest-activity h3 {
+  font-size: 30px; font-family: "SBC AkkuratLight"; background: #000; margin: 0; padding: $padding;
+}
+
+#twitter-widget-0 { width: 100% !important ; max-width: none !important; height: 500px !important; background: #FFF; }
+
+
+// Basic page content
+
+#content {
+  img { max-width: 100%; height: auto; }
+}
+
+.content {
+  ul { list-style: disc; margin: 0 0 1em 1em; }
+  ol { list-style: decimal; margin: 0 0 1em 1.5em; }
+  li { margin: 0.5em 0; }
+}
+
+.not-front #content {
+  background: #FFF;
+  margin-bottom: 40px;
+  font-size: 1.4em;
+  color: $dark-grey;
+  padding: $padding;
+  h1 { margin-top: 0; }
+  .content {
+
+  }
+}
+
+
+// Homepage Sticky Events
+
+#block-featured-event {
+  background: #FFF;
+  padding: 0;
+  h3 { }
+  h2 { font-size: 1.4em; margin: 0 0 0.5em; }
+  h2 a { text-decoration: none; color: #000; }
+  .block-title { border-bottom: 1px solid #CCC; padding: $padding; margin: 0; }
+  article { padding: 0 $padding $padding; }
+}
+#block-featured-free-events {
+  background: #FFF;
+  padding: 0;
+  margin-bottom: 0;
+  h3 { }
+  h2 { font-size: 1.4em; margin: 0 0 0.5em; }
+  h2 a { text-decoration: none; color: #000; }
+  .block-title { border-bottom: 1px solid #CCC; padding: $padding; margin: 0; }
+  article { padding: 0 $padding $padding; }
+  .content { display: none; }
+}
+
+
+// Homepage Events list
+
+.front #block-saturday-27-september-2014, .front #block-sunday-28-september-2014 {
+  background: #FFF;
+  padding: 0;
+  h3 { }
+  h2 { font-size: 1.4em; margin: 0 0 0.3em; }
+  h2 a { text-decoration: none; color: #000; }
+  .block-title { font-family: "SBC AkkuratLight"; font-size: 1.3em; border: none; margin: 0; padding: $padding; background: #ffffa8; border-bottom: 1px solid #CCC; }
+  article { padding: 0 $padding $padding; }
+  .views-row { border-top: 1px solid #CCC; }
+  .views-row:first-child { border-top: none; }
+  .free-event-btn { font-size: 0.9em; color: #3DAADC; margin-top: 0.7em; }
+}
+
+.field-name-field-event-date-string { margin: 0 0 0.5em; padding: $padding 0 0; color: #CE1745; font-size: 0.9em; }
+.field-name-field-event-booking-link {
+  a { display: block; color: #000; font-family: "SBC AkkuratBold"; text-decoration: none; margin-top: 1em; padding: 15px $padding; background: #b9e4fb url("../images/all-events-icon@2x.png") no-repeat; background-position: right center; background-size: 55px auto; }
+}
+.no-backgroundsize .field-name-field-event-booking-link a { background-image: url("../images/all-events-icon.png"); }
+
+
+// What's on -> Past Events page (Events full view)
+
+.page-node-21 {
+  #content .block-title { font-family: "SBC AkkuratLight"; font-size: 1.3em; border: none; margin: 0; padding: $padding; background: #ffffa8; border-bottom: 1px solid #CCC; }
+  #content h2 { padding-top: 0.8em; }
+}
+.view-events-listing {
+  .views-row { border-top: 1px solid $light-grey; padding-bottom: $padding; }
+  .views-row-first { border-top: none; }
+  .field-name-field-event-date-string { border-top: none; padding: 0; margin: 0 0 1em;  }
+  .field-name-field-venue { margin: 0 0 1em; }
+  h2 { margin-bottom: 0.5em; }
+  .field-name-field-event-type { margin: 0 0 1em; }
+  .field-name-field-event-booking-link a { width: 240px; margin-bottom: 1.5em; }
+}
+
+
+// JSON feed block
+
+/* #block-json-feed */
+.section-question #region-post-content {
+  padding: 0; margin-bottom: 10px ;
+  h3 { font-family: "SBC AkkuratLight"; font-size: 1.8em ; background: #000; margin: 0; padding: $padding; color: #FFF; border-bottom: 1px solid $bg-grey; }
+
+  a.user-link {
+    &:link, &:visited {
+      color: $dark-grey;
+      text-decoration: none;
+    }
+  }
+  a.user-link {
+    &:hover, &:active {
+      color: $dark-grey;
+      text-decoration: underline;
+      opacity: 0.5 !important;
+    }
+  }
+
+  ul { margin: 0; padding: 0 $padding; list-style: none; }
+  li { border-top: 1px dotted #CCC; padding: 0.8em 0; }
+  li:first-child { border-top: none; }
+  .user-link { font-weight: bold; }
+  .profile-img { float: left; margin-right: 15px; }
+  .username { font-size: 0.8em; font-weight: normal; }
+  .twitter-links { float: right; font-size: 0.8em; line-height: 1.8;  color: $grey; }
+  .twitter-links a { color: $grey; }
+}
+
+
+// Question pages
+
+.section-question #content {
+  position: relative;
+  background-color: $web-inspire-color;
+  text-align: left;
+  line-height: 1.6;
+  padding: 60px 160px 40px ;
+  margin-bottom: 1px;
+  // min-height: 400px;
+  .block { margin: 0; position: static; }
+  h1 { clear: both; color: white; font-family: "SBC AkkuratLight"; font-size: 1.9em ; font-style: normal; margin: 0 0 0.8em; }
+  .video-wrapper {
+    position: relative;
+    margin: 0 auto;
+    /* Use percentage width, so it scales */
+    width: 75%;
+    /* and this is where the magic happens */
+    height: 0;
+    padding-bottom: 42.18%; /* a magic number! */
+  }
+  .page-previous { color: #FFF; text-decoration: none; font-size: 0.8em; line-height: 1.2; position: absolute; top: 110px; left: 0; height: 55px; background: url("../images/question-arrows@2x.png") no-repeat; background-position: left -55px ; background-size: 55px; padding: 5px 0 5px 65px; }
+  .page-next { color: #FFF; text-decoration: none; font-size: 0.8em; line-height: 1.2; position: absolute; top: 110px; right: 0; height: 55px; background: url("../images/question-arrows@2x.png") no-repeat; background-position: right top ; background-size: 55px; padding: 5px 65px 5px 0; }
+  .field-name-field-hashtags { position: absolute; top: 20px; right: 20px; /* float: right; margin-bottom: 0.5em ; */ color: #FFF; background: url("../images/twitter-icon@2x.png") no-repeat left center; background-size: 60px; padding-left: 40px ;
+    .field-item { float: left; margin-left: 10px; }
+  }
+  .field-name-field-hashtags a { color: #FFF; text-decoration: none; }
+}
+.page-node-31 .page-previous { display: none; }
+
+.no-backgroundsize .section-question #content .page-previous, .no-backgroundsize .section-question #content .page-next { background-image: url("../images/question-arrows.png") }
+.no-backgroundsize .section-question #content .field-name-field-hashtags { background-image: url("../images/twitter-icon.png"); }
+
+
+// Question side menu
+
+#block-explore-all-questions {
+  background: #FFF;
+  color: $dark-grey;
+  display: block;
+  font-size: 1.1em;
+  padding: 0;
+  h3 { padding: 15px 10px 15px 20px; margin: 0 auto; }
+  ul { margin-left: 0; margin-bottom: 0; }
+  li { list-style: none; margin: 0; }
+
+  .content .content a {
+    background-image:  url("../images/arrow-nav-left@2x.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 64px;
+    margin-bottom: 0;
+    margin-top: 2px;
+    font-family: "SBC AkkuratLight";
+    font-size: 1.3em;
+    display: block;
+    padding: $padding;
+    color: white;
+    text-decoration: none;
+    &:link, &:visited {
+      // background-color: #000 ;
+    }
+    &:hover, &:active {
+      background-color: #000; opacity: 1;
+    }
+  }
+
+  /* li.id-webinspire { background-color: $web-inspire-color; }
+  li.id-webcreate { background-color: $web-create-color; }
+  li.id-openweb { background-color: $open-web-color; }
+  li.id-webjoy-webworry { background-color: $web-joy-worry-color; }
+  li.id-mywebidea { background-color: $my-web-idea-color; } */
+
+}
+
+.no-backgroundsize #block-explore-all-questions .content .content a { background-image:  url("../images/arrow-nav-left.png"); }
+
+
+#block-views-get_involved-block {
+  font-family: "SBC AkkuratLight";
+  font-size: 1.6em;
+  padding: 40px $padding;
+  color: #FFF;
+  a { color: #FFF; font-family: "SBC AkkuratBold"; text-decoration: none; }
+}
+
+
+// Watch again page
+
+.page-watch-again {
+  #block-system-main { margin-bottom: 0; }
+  #content { padding: 0; }
+  #content-header { padding: $padding;
+    h1 { margin: 0; }
+  }
+  h3.section-heading { padding: $padding; font-family: "SBC AkkuratLight"; color: #FFF; margin: 0; }
+  h3.youtube-video { background: #000 url("../images/youtube-icon@2x.png") no-repeat right center; background-size: 67px; }
+  h3.flickr { background: #000 url("../images/flickr-icon@2x.png") no-repeat right center; background-size: 100px; }
+  h3.soundcloud { background: #000 url("../images/soundcloud-icon@2x.png") no-repeat right center; background-size: 90px; }
+
+  .field-name-field-youtube-video-embed, .field-name-field-flickr-embed, .field-name-field-soundcloud-embed { border-bottom: 1px solid #414141; }
+
+}
+
+.no-backgroundsize .page-watch-again h3.youtube-video { background-image: url("../images/youtube-icon.png"); }
+.no-backgroundsize .page-watch-again h3.flickr { background-image: url("../images/flickr-icon.png"); }
+.no-backgroundsize .page-watch-again h3.soundcloud { background-image: url("../images/soundcloud-icon.png"); }
+
+
+
+// Footer
+
+footer {
+  background: #fff; color: #000; margin: 0 ; padding: 0; font-size: 0.9em; line-height: 1.6;
+  h3 { font-size: 1.2em; letter-spacing: -0.02em; }
+  h4 { font-family: "SBC AkkuratLight"; font-size: 1.5em; }
+  a {
+    &:link, &:visited {
+      color: #000;
+      text-decoration: underline;
+    }
+    &:hover, &:active {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}
+footer .block { margin: 0; }
+footer .block-inner { padding: 20px 0 0; }
+#region-sc-info { padding-right: 170px; }
+
+footer ul li.leaf { list-style-image: none; list-style-type: none; margin: 0; padding: 0; }
+
+.sc-logo-footer { margin: 15px 30px 10px 0; }
+.arts-council-logo { margin: 15px 0 10px; }
+#copyright { font-size: 0.8em; }
+#footer-links { font-size: 0.8em;  }
+
+#region-partners { background: #EEE; }
+#region-partners .block-inner { padding: $padding; text-align: center; }
+#region-partners img { }
+.web-we-want-logo { width: 100%; height: auto; max-width: 110px; }
+
+
+
+// MEDIA QUERIES
+
+@media (max-width: 1280px ) {
+  body { background-position: 500px -70px; }
+  #region-sc-info { padding: 0 70px 0 20px; }
+  //  #region-sidebar-first .block { font-size: 1.1em; }
+}
+
+@media (max-width: 1150px ) {
+  #region-pre-content, #content, .section-question #region-post-content { width: 66.67%; }
+  .section-question #content { width: 100%; }
+  #region-sidebar-first { width: 33.33%; }
+  #region-sidebar-second { width: 33.33%; }
+  //  #region-sidebar-first .block { font-size: 0.9em; }
+  .sc-logo-footer { width: 45%; height: auto; max-width: 210px; padding: 0; margin-right: 20px; float: left; }
+  .arts-council-logo { width: 45% ; height: auto; max-width: 210px; float: left; }
+}
+
+@media (max-width: 960px ) {
+  #region-sc-info { padding-right: 30px;  }
+}
+
+@media (max-width: 850px ) {
+  .not-front #content { font-size: 1.2em; }
+  #region-pre-content, #content, .section-question #region-post-content { width: 58.3334%; }
+  .section-question #content { width: 100%; }
+  #region-sidebar-first { width: 41.6667%; }
+  #region-sidebar-second { width: 41.6667%; }
+}
+
+@media (max-width: 768px ) {
+  #region-pre-content, #content, .section-question #region-post-content { width: 100%; }
+  #region-sidebar-first { width: 100%; }
+  #region-sidebar-second { width: 100%; }
+
+  body { background-position: 300px -80px; }
+
+  #disclaimer { text-align: left; }
+
+  #header {
+    h2 { font-size: 3.0em; }
+    h3 { font-size: 1.2em; }
+  }
+
+  #region-pre-content .block { font-size: 1.2em; }
+
+  #block-festival-dates { background: none; padding-top: 15px; }
+  .fromt #block-festival-dates { background: none; padding-top: 0; }
+
+  .front #block-view-all-events { margin-bottom: 5px; }
+
+  .front #content-area { }
+  .front #content-area h3 { font-size: 1.3em; padding: 0 $padding; }
+  .front #block-social-conversation-latest-activity h3 { padding: 10px $padding; }
+
+  .not-front #content { font-size: 1.2em; margin-bottom: 5px; }
+
+  .front #block-views-questions_homepage_list-block {
+    .question-links { font-family: "SBC AkkuratLight"; font-size: 1em; letter-spacing: -1px; }
+    .question-hashtag { float: left; color: #FFF; padding: 15px $padding 15px 60px; background-size: 30px;  }
+    .get-involved-btn { float: right;  color: #FFF; padding: 15px 75px 15px $padding; border-left: 1px solid $bg-grey; background-size: 44px; }
+  }
+
+  #region-sc-address { padding-left: 20px; }
+  #region-sc-address, #region-social-menu { width: 33.33%; }
+  #region-partners { margin-top: -66px; }
+
+}
+
+//@media (max-width: 767px) {
+@media (max-width: 849px) {
+  #navigation #primary { clear: both;  }
+  #navigation #mobile-menu-icon { display: block; }
+  #navigation ul li { display: block; float: none; margin-bottom: 1px; }
+
+  #region-partners { width: 100%; float: none; clear: both; margin-top: 0; }
+  #region-partners .block-inner { text-align: left; }
+}
+
+// @media (min-width: 768px) {
+@media (min-width: 850px) {
+  #primary.collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+  }
+}
+.no-canvas #primary.collapse { display: block !important; } // for IE8
+
+@media (max-width: 568px ) {
+
+  // body { background-position: 190px 105px; background-size: 300px; }
+  body { background-image: url("../images/body-bg-mobile.jpg"); background-position: 190px 0px; background-size: 600px; }
+  h1 { font-size: 1.4em; }
+  h3, .section-question #region-post-content h3 { font-size: 1.2em; }
+
+  #header {
+    h2 { font-size: 2.0em; }
+    h3 { font-size: 0.8em; margin-top: 0.5em; }
+  }
+  #logo { width: 100px; }
+  #block-festival-dates { font-size: 0.8em; }
+  #block-about-this-festival { font-size: 0.8em; }
+
+  .not-front #content { font-size: 0.8em; }
+
+
+  .section-question #content {
+    padding-left: 70px;
+    padding-right: 70px;
+    h1 { font-size: 1.4em; }
+    .page-previous { display: block; height: 40px; background-position: left -40px ; background-size: 40px; padding: 5px 0 5px 0px; color: transparent; }
+    .page-next { display: block; height: 40px; background-position: right top; background-size: 40px; padding: 5px 0px 5px 0; color: transparent; }
+    .field-name-field-hashtags { background-size: 30px; padding-left: 15px;  }
+  }
+
+  footer {
+    p, ul, #copyright, #footer-links { font-size: 0.6em; }
+    h3 { font-size: 1em; }
+    h4 { font-size: 1em; }
+  }
+  #region-sc-address, #region-social-menu { width: 50%; }
+  #region-sc-address { margin-bottom: 1.8em; }
+  #region-partners { width: 100%; }
+
+  .arts-council-logo { float: right; }
+
+  .front #block-views-questions_homepage_list-block .question-hashtag {
+    padding: 10px 0 10px 35px ;
+    background-position: left 10px center;
+    background-size: 20px;
+  }
+  .front #block-views-questions_homepage_list-block .get-involved-btn {
+    padding: 10px 40px 10px 10px;
+    border-left: 1px solid $bg-grey;
+    background-position: right 10px center;
+    background-size: 25px;
+  }
+
+}
+
+@media (max-width: 320px ) {
+
+  #disclaimer { font-size: 0.6em; }
+  #region-pre-content { border-left: none; }
+  #region-pre-content .block { font-size: 1.1em; }
+  .web-we-want-logo { max-width: 90px; }
+
+}
