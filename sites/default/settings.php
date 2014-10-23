@@ -216,7 +216,7 @@ $databases = array (
     'default' => 
     array (
       'database' => 'webwewantfestdev',
-      'username' => 'scdigital',
+      'username' => 'scdigitaluser',
       'password' => 'bIk-orz-yiaf-',
       'host' => 'scdigital.cgxj1amdigzw.eu-west-1.rds.amazonaws.com',
       'port' => '',
